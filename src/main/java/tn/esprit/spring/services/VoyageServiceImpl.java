@@ -1,14 +1,16 @@
 package tn.esprit.spring.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Train;
 import tn.esprit.spring.entities.Voyage;
+import tn.esprit.spring.entities.dto.Voyagedto;
 import tn.esprit.spring.repository.TrainRepository;
 import tn.esprit.spring.repository.VoyageRepository;
-
-import java.util.List;
 
 @Service
 public class VoyageServiceImpl implements IVoyageService {
@@ -17,8 +19,20 @@ public class VoyageServiceImpl implements IVoyageService {
     @Autowired
     TrainRepository trainRepository;
     @Override
-    public void ajouterVoyage(Voyage v) {
-        voyageRepository.save(v);
+    public void ajouterVoyage(Voyagedto v) {
+        voyageRepository.save(Voyage.builder()
+        		.idVoyage(v.getIdVoyage())
+        		.codeVoyage(v.getCodeVoyage())
+        		.dateArrivee(v.getDateArrivee())
+        		.dateDepart(v.getDateDepart())
+        		.gareArrivee(v.getGareArrivee())
+        		.gareDepart(v.getGareDepart())
+        		.heureArrivee(v.getHeureArrivee())
+        		.heureDepart(v.getHeureDepart())
+        		.mesVoyageurs(v.getMesVoyageurs())
+        		.train(v.getTrain())
+        		.build()
+        		);
     }
 
     @Override
@@ -29,27 +43,28 @@ public class VoyageServiceImpl implements IVoyageService {
 
     public void affecterTrainAVoyage(Long idTrain, Long idVoyage) {
 
-        Train t = trainRepository.findById(idTrain).get();
-        Voyage v = voyageRepository.findById(idVoyage).get();
+    	Optional<Voyage>  voyage = voyageRepository.findById(idVoyage);
+    	Optional<Train>  train = trainRepository.findById(idTrain);
+    	if (train.isPresent() && voyage.isPresent()) {
+        Train t = train.get();
+        Voyage v = voyage.get();
         v.setTrain(t);
         voyageRepository.save(v);
-    }
+    }}
 
     @Override
     public List<Voyage> recupererAll() {
-        List<Voyage> list = (List<Voyage>) voyageRepository.findAll();
-        return list;
+        return (List<Voyage>) voyageRepository.findAll();
     }
 
     @Override
     public Voyage recupererVoyageParId(long idVoyage) {
-        Voyage v = voyageRepository.findById(idVoyage).orElse(null);
-        return v;
+        return voyageRepository.findById(idVoyage).orElse(null);
     }
 
     @Override
     public void supprimerVoyage(Voyage v) {
-        //TODO method
+    	voyageRepository.deleteById(v.getIdVoyage());
     }
 
 }

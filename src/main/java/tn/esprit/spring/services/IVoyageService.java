@@ -1,14 +1,14 @@
 package tn.esprit.spring.services;
 
 import tn.esprit.spring.entities.Voyage;
+import tn.esprit.spring.entities.dto.Voyagedto;
 
 import java.util.List;
 
 public interface IVoyageService {
 
-	 void ajouterVoyage(Voyage v);
+	 void ajouterVoyage(Voyagedto v);
 	 void modifierVoyage(Voyage v);
-	 //public void affecterTrainAVoyage(Long idTrain, String gareDepart, String  gareArrivee);
 	 void affecterTrainAVoyage(Long idTrain, Long idVoyage);
 	 List<Voyage> recupererAll();
 	 Voyage recupererVoyageParId(long idVoyage);

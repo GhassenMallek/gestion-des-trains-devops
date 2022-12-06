@@ -1,15 +1,13 @@
 package tn.esprit.spring.services;
 
-import org.springframework.stereotype.Repository;
-
-import tn.esprit.spring.entities.Voyage;
-import tn.esprit.spring.entities.Voyageur;
-
 import java.util.List;
+
+import tn.esprit.spring.entities.Voyageur;
+import tn.esprit.spring.entities.dto.Voyageurdto;
 
 
 public interface IVoyageurService {
-    void ajouterVoyageur(Voyageur Voyageur);
+    void ajouterVoyageur(Voyageurdto voyageur);
     //Modifier le voyageur
     void modifierVoyageur(Voyageur voyageur);
     List<Voyageur> recupererAll();

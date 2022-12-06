@@ -20,7 +20,7 @@ public class PerformanceAspect {
             long start = System.currentTimeMillis();
             Object out=pjp.proceed();
             long elapsedTime = System.currentTimeMillis() - start;
-            logger.info("Method execution time: " + elapsedTime + " milliseconds.");
+            logger.info("Method execution time: %1$s  milliseconds." ,elapsedTime );
             return out;
     }
 
