@@ -12,7 +12,7 @@
 	<groupId>com.esprit.examen</groupId>
 	<artifactId>tpAchatProject</artifactId>
 	<version>1.${revision}</version>
-	<name>tpAchatProject</name>
+	<name>tpTrainManagement</name>
 	<description>tpAchatProject</description>
 	<properties>
 		<java.version>1.8</java.version>
