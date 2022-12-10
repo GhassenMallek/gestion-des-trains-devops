@@ -10,12 +10,7 @@ import tn.esprit.spring.entities.etatTrain;
 @Builder
 public class Traindto {
 	 long idTrain;
-
-
-	    long codeTrain;
-
-
-	    private etatTrain etat;
-
-	    private int nbPlaceLibre;
+ long codeTrain;
+ private etatTrain etat;
+ private int nbPlaceLibre;
 }
