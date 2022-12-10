@@ -83,6 +83,7 @@ public class TrainTest {
         this.v1.setTrain(t1);
         this.v1.setGareArrivee(RADES);
         this.v1.setHeureDepart(16);
+        this.v1.setDateArrivee(new Date(2022, 12, 10));
 
         this.v2 = new Voyage();
         this.v2.setIdVoyage(1L);
@@ -90,6 +91,7 @@ public class TrainTest {
         this.v2.setGareDepart(TUNIS);
         this.v2.setTrain(t2);
         this.v2.setGareArrivee(TUNIS);
+        this.v2.setDateArrivee(new Date(2022, 12, 10));
 
         this.v3 = new Voyage();
         this.v3.setIdVoyage(2L);
@@ -166,5 +168,25 @@ public class TrainTest {
         lesVoyages.add(v1);
         v1.getTrain().setNbPlaceLibre(t1.getNbPlaceLibre() - 1);
         when(voyageRepository.save(v1)).thenReturn(v1);
+    }
+
+    @Test
+    public void testDesaffecterVoyageursTrain() {
+        init();
+        List<Voyage> lesVoyages = new ArrayList<>();
+        List<Voyageur> voyageurs; // = new ArrayList<>();
+        lesVoyages.add(v1);
+        when(voyageRepository.rechercheVoyage(TUNIS,RADES,16)).thenReturn(lesVoyages);
+        voyageurs = v1.getMesVoyageurs();
+    }
+
+    @Test
+    public void testTrainsEnGare() {
+        init();
+        List<Voyage> lesVoyages = new ArrayList<>();
+        lesVoyages.add(v1);
+        when(voyageRepository.findAll()).thenReturn(lesVoyages);
+        assertThat(v1.getDateArrivee().before(new Date(2022, 12, 13)));
+        assertThat("les trains sont " + lesVoyages.get(0).getTrain().getCodeTrain()).isEqualTo("les trains sont 0");
     }
 }
