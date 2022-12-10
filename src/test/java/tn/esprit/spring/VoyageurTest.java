@@ -1,6 +1,5 @@
 package tn.esprit.spring;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,9 +9,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.test.context.junit4.SpringRunner;
-import tn.esprit.spring.entities.Voyage;
 import tn.esprit.spring.entities.Voyageur;
-import tn.esprit.spring.entities.dto.Voyagedto;
 import tn.esprit.spring.entities.dto.Voyageurdto;
 import tn.esprit.spring.repository.VoyageurRepository;
 import tn.esprit.spring.services.VoyageurServiceImpl;
@@ -30,7 +27,6 @@ import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
 @RunWith(SpringRunner.class)
-@Slf4j
 @ExtendWith(MockitoExtension.class)
 public class VoyageurTest {
     @Mock

@@ -1,6 +1,5 @@
 package tn.esprit.spring;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -37,7 +36,6 @@ import static tn.esprit.spring.entities.Ville.TUNIS;
 import static tn.esprit.spring.entities.etatTrain.EN_ROUTE;
 
 @RunWith(SpringRunner.class)
-@Slf4j
 @ExtendWith(MockitoExtension.class)
 public class TrainTest {
     @Mock
@@ -170,15 +168,7 @@ public class TrainTest {
         when(voyageRepository.save(v1)).thenReturn(v1);
     }
 
-    @Test
-    public void testDesaffecterVoyageursTrain() {
-        init();
-        List<Voyage> lesVoyages = new ArrayList<>();
-        List<Voyageur> voyageurs; // = new ArrayList<>();
-        lesVoyages.add(v1);
-        when(voyageRepository.rechercheVoyage(TUNIS,RADES,16)).thenReturn(lesVoyages);
-        voyageurs = v1.getMesVoyageurs();
-    }
+
 
     @Test
     public void testTrainsEnGare() {

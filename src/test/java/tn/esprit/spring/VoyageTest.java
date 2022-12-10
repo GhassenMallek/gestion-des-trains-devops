@@ -1,6 +1,5 @@
 package tn.esprit.spring;
 
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +11,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.test.context.junit4.SpringRunner;
 import tn.esprit.spring.entities.Train;
 import tn.esprit.spring.entities.Voyage;
-import tn.esprit.spring.entities.dto.Traindto;
 import tn.esprit.spring.entities.dto.Voyagedto;
 import tn.esprit.spring.repository.TrainRepository;
 import tn.esprit.spring.repository.VoyageRepository;
@@ -35,7 +33,6 @@ import static tn.esprit.spring.entities.Ville.TUNIS;
 import static tn.esprit.spring.entities.etatTrain.EN_ROUTE;
 
 @RunWith(SpringRunner.class)
-@Slf4j
 @ExtendWith(MockitoExtension.class)
 public class VoyageTest {
     @Mock
