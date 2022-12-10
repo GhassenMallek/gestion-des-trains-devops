@@ -16,8 +16,8 @@ public class VoyageurServiceImpl implements IVoyageurService{
 	@Autowired
 	VoyageurRepository voyageurRepository;
 
-	public void ajouterVoyageur(Voyageurdto voyageur) {
-		voyageurRepository.save(Voyageur.builder()
+	public Voyageur ajouterVoyageur(Voyageurdto voyageur) {
+		return voyageurRepository.save(Voyageur.builder()
 				.idVoyageur(voyageur.getIdVoyageur())
 				.nomVoyageur(voyageur.getNomVoyageur())
 				.mesvoyages(voyageur.getMesvoyages())

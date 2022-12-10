@@ -7,7 +7,7 @@ import tn.esprit.spring.entities.dto.Voyageurdto;
 
 
 public interface IVoyageurService {
-    void ajouterVoyageur(Voyageurdto voyageur);
+    Voyageur ajouterVoyageur(Voyageurdto voyageur);
     //Modifier le voyageur
     void modifierVoyageur(Voyageur voyageur);
     List<Voyageur> recupererAll();
