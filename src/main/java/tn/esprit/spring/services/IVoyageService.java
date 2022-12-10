@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IVoyageService {
 
-	 void ajouterVoyage(Voyagedto v);
+	 Voyage ajouterVoyage(Voyagedto v);
 	 void modifierVoyage(Voyage v);
 	 void affecterTrainAVoyage(Long idTrain, Long idVoyage);
 	 List<Voyage> recupererAll();

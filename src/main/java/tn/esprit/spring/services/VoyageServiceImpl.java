@@ -19,8 +19,8 @@ public class VoyageServiceImpl implements IVoyageService {
     @Autowired
     TrainRepository trainRepository;
     @Override
-    public void ajouterVoyage(Voyagedto v) {
-        voyageRepository.save(Voyage.builder()
+    public Voyage ajouterVoyage(Voyagedto v) {
+        return voyageRepository.save(Voyage.builder()
         		.idVoyage(v.getIdVoyage())
         		.codeVoyage(v.getCodeVoyage())
         		.dateArrivee(v.getDateArrivee())
