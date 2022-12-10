@@ -176,7 +176,6 @@ public class TrainTest {
         List<Voyage> lesVoyages = new ArrayList<>();
         lesVoyages.add(v1);
         when(voyageRepository.findAll()).thenReturn(lesVoyages);
-        assertThat(v1.getDateArrivee().before(new Date(2022, 12, 13)));
         assertThat("les trains sont " + lesVoyages.get(0).getTrain().getCodeTrain()).isEqualTo("les trains sont 0");
     }
 }
