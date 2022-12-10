@@ -37,9 +37,9 @@ public class TrainServiceImpl implements ITrainService {
     VoyageRepository voyageRepository;
 
 
-    public void ajouterTrain(Traindto t) {
+    public Train ajouterTrain(Traindto t) {
 
-        trainRepository.save(Train.builder()
+         return trainRepository.save(Train.builder()
         		.idTrain(t.getIdTrain())
         		.codeTrain(t.getCodeTrain())
         		.etat(t.getEtat())
@@ -95,7 +95,7 @@ public class TrainServiceImpl implements ITrainService {
 
 		Optional<Voyageur>  lesvoyageur = voyageurRepository.findById(idVoyageur);
         List<Voyage> lesvoyages ;
-        lesvoyages = voyageRepository.rechercheVoyage(nomGareDepart, nomGareDepart, heureDepart);
+        lesvoyages = voyageRepository.rechercheVoyage(nomGareDepart, nomGareArrivee, heureDepart);
         for (int i = 0; i < lesvoyages.size(); i++) {
             if (lesvoyages.get(i).getTrain().getNbPlaceLibre() != 0) {
             	if( lesvoyageur.isPresent()) {
