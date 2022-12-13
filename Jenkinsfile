@@ -57,6 +57,7 @@ pipeline {
       steps {
         dir('./') {
           withCredentials([usernameColonPassword(credentialsId: 'Nexus-Creds', variable: 'NEXUS_CREDENTIALS')]) {
+            echo '$VERSION/tpAchatProject-$VERSION.jar'
             sh script: 'curl -u ${NEXUS_CREDENTIALS} -o ./target/tpachat.jar "$NEXUS_URL/repository/$NEXUS_REPOSITORY/com/esprit/examen/tpAchatProject/$VERSION/tpAchatProject-$VERSION.jar"'
           }
         }
