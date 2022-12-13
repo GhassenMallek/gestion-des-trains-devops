@@ -53,6 +53,14 @@ pipeline {
                             sh """mvn clean package deploy:deploy-file -DgroupId=com.esprit.examen -DartifactId=tpAchatProject -Dversion=1.${env.BUILD_NUMBER} -DgeneratePom=true -Dpackaging=jar -DrepositoryId=deploymentRepo -Durl=http://172.10.0.55:8081/repository/maven-releases/ -Dfile=target/tpAchatProject-1.${env.BUILD_NUMBER}.jar -Drevision=${env.BUILD_NUMBER}"""
                             }
                         }
+     stage('Login to DockerHub') {
+      steps {
+        dir('./') {
+          echo DOCKER_CREDS_USR
+          sh('docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW')
+        }
+      }
+    }
     stage('Pull the file off Nexus') {
       steps {
         dir('./') {
@@ -67,15 +75,6 @@ pipeline {
       steps {
         dir('./') {
           sh 'docker build -t $DOCKER_CREDS_USR/tpgestiondestrainback .'
-        }
-      }
-    }
-  
-    stage('Login to DockerHub') {
-      steps {
-        dir('./') {
-          echo DOCKER_CREDS_USR
-          sh('docker login -u $DOCKER_CREDS_USR -p $DOCKER_CREDS_PSW')
         }
       }
     }
